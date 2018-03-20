@@ -14,6 +14,8 @@
 * Travel reimbursement
 * Prizes
 
+## Use Case Diagram
+![usecasediagram](UseCaseDiagram.png)
 ## Functional Use Cases
 
 ### Authentication
@@ -54,7 +56,7 @@
 ### Schedule/Events
 
 * Participants should be able to check schedule
-* Administrators should be able to add events and modify schedule
+* Administrators should be able to add events and modify/delete schedule
 
 ### Announcements/Notifications
 * Participants should be able to fetch announcements
