@@ -1,4 +1,3 @@
-
 **POST /create-prize** <br />
 Creates a new prize
 
@@ -18,25 +17,24 @@ Request Parameters <br />
 Request
 ```
 {
-  "prizeDescription": "Google Home",
-  "descriptionToWin": "Name entered in raffle",
+	"prizeDescription": "Google Home",
+	"descriptionToWin": "Name entered in raffle",
   "numberOfPrizes": 3,
   "typeOfPrize": "item",
-  "sponsorName": "Google" 
+	"sponsorName": "Google"
 }
 ```
 
 Response
 ```
 {
-  "data": {
-    "prizeDescription": "Google Home",
-    "descriptionToWin": "Name entered in raffle",
-    "numberOfPrizes": 3,
-    "typeOfPrize": "item",
-    "sponsorName": "Google",
-    "id": 1
-  }
+	"data": {
+		"id": 1,
+		"prizeDescription": "Google Home",
+		"descriptionToWin": "Name entered in raffle",
+	  "numberOfPrizes": 3,
+	  "typeOfPrize": "item",
+		"sponsorName": "Google"
+	}
 }
 ```
-
