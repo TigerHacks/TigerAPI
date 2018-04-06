@@ -4,7 +4,7 @@
 Creates a participant's record
 
 **POST /v1/registration/participant**
-Creates a new attendee registration.
+Creates a new participant registration.
 
 Headers
 
@@ -38,13 +38,12 @@ Participant Parameters
 | `school` | the user's school of length 255 or less | Yes |
 | `grade/level` | less than 15 characters | Yes |
 | `major` | the user's major of length 63 or less | Yes |
-| `email` | less than 31 characters | Yes |
 | `phoneNumber` | the user's phone number, formatted as a string of length 15 or less | No |
 | `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE', 'INTERNATIONAL'] | Yes |
 | `shirtSize` | a string of length 1 from the following options: ['S', 'M', 'L', 'XL'] | Yes |
 | `diet` | a string from the following options: ['NONE', 'VEGETARIAN', 'VEGAN', 'GLUTEN_FREE'] | Yes |
 | `gender` | a string from the following options: ['MALE', 'FEMALE', 'NON_BINARY', 'OTHER'] | Yes |
-| `professionalInterest` | a string from the following options: ['NONE', 'INTERNSHIP', 'FULLTIME', 'BOTH'] | Yes |
+| `professionalInterest` | a string from the following options: ['NONE', 'INTERNORPARTTIME', 'FULLTIME', 'BOTH'] | Yes |
 | `github` | the user's GitHub handle of length 50 or less | Yes |
 | `linkedin` | the user's LinkedIn handle of length 50 or less | Yes |
 | `hasLightningInterest` | a boolean indicating whether the user is interested in giving a short talk | No |
@@ -79,29 +78,29 @@ OSContributor Parameters <br />
 Request
 ```
 {
-    "attendee": {
+    "participant": {
                 "firstName": "John",
                 "lastName": "Doe",
+                "E-mail": "abc56@mail.missouri.edu",
+                "age": 19,
+                "username": "",
+                "password": "",
+                "school": "University of Missouri - Columbia",
+                "grade/level": "junior",
+                "major": "Computer Science",
+                "phoneNumber": "12345678910"
+                "transportation": "NOT_NEEDED",
                 "shirtSize": "M",
                 "diet": "NONE",
-                "age": 19,
-                "graduationYear": 2019,
-                "transportation": "NOT_NEEDED",
-                "school": "University of Illinois at Urbana-Champaign",
-                "major": "Computer Science",
                 "gender": "MALE",
                 "professionalInterest": "BOTH",
                 "github": "JDoe1234",
                 "linkedin": "JDoe5678",
-                "interests": "CS",
-                "isNovice": true,
-                "isPrivate": false,
                 "hasLightningInterest": false,
-                "phoneNumber": "12345678910"
     },
     "collaborators": [
         {
-                    "collaborator": "collaborator@hackillinois.org"
+                    "collaborator": "collaborator@tigerhack.org"
         }
     ],
     "longForm": [
@@ -129,49 +128,49 @@ Response
     "data": {
         "firstName": "John",
         "lastName": "Doe",
+        "E-mail": "abc56@mail.missouri.edu",
+        "age": 19,
+        "username": "",
+        "password": "",
+        "school": "University of Missouri - Columbia",
+        "grade/level": "junior",
+        "major": "Computer Science",
+        "phoneNumber": "12345678910"
+        "transportation": "NOT_NEEDED",
         "shirtSize": "M",
         "diet": "NONE",
-        "age": 19,
-        "graduationYear": 2019,
-        "transportation": "NOT_NEEDED",
-        "school": "University of Illinois at Urbana-Champaign",
-        "major": "Computer Science",
         "gender": "MALE",
         "professionalInterest": "BOTH",
         "github": "JDoe1234",
         "linkedin": "JDoe5678",
-        "interests": "CS",
-        "isNovice": false,
-        "isPrivate": false,
         "hasLightningInterest": false,
-        "phoneNumber": "12345678910",
         "userId": 1,
         "id": 16,
         "osContributors": [
             {
                 "osContributor": "os contributors",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 7
             }
         ],
         "longForm": [
             {
                 "info": "One of the projects I'm really proud of is my HelloWorld Machine. It says 'Hello World' in ten different languages!",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 3
             }
         ],
         "extraInfo": [
             {
                 "website": "mywebsite.com",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 2
             }
         ],
         "collaborators": [
             {
-                "collaborator": "collaborator@hackillinois.org",
-                "attendeeId": 16,
+                "collaborator": "collaborator@tigerhack.org",
+                "participantId": 16,
                 "id": 16
             }
         ]
@@ -183,12 +182,12 @@ Errors: <br>
 
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
-| InvalidParameterError | `User` | an Attendee for the requested user already exists |
+| InvalidParameterError | `User` | a Participant for the requested user already exists |
 | InvalidHeaderError | `Authorization` | the authentication token was invalid or absent |
 ---
 
-**GET /v1/registration/attendee** <br />
-Allows requester to retrieve information about their attendee registration. Requires requester to have an attendee registration.
+**GET /v1/registration/participant** <br />
+Allows requester to retrieve information about their participant registration. Requires requester to have a participant registration.
 
 Headers <br />
 
@@ -206,49 +205,49 @@ Response
     "data": {
         "firstName": "John",
         "lastName": "Doe",
+        "E-mail": "abc56@mail.missouri.edu",
+        "age": 19,
+        "username": "",
+        "password": "",
+        "school": "University of Missouri - Columbia",
+        "grade/level": "junior",
+        "major": "Computer Science",
+        "phoneNumber": "12345678910"
+        "transportation": "NOT_NEEDED",
         "shirtSize": "M",
         "diet": "NONE",
-        "age": 19,
-        "graduationYear": 2019,
-        "transportation": "NOT_NEEDED",
-        "school": "University of Illinois at Urbana-Champaign",
-        "major": "Computer Science",
         "gender": "MALE",
         "professionalInterest": "BOTH",
         "github": "JDoe1234",
         "linkedin": "JDoe5678",
-        "interests": "CS",
-        "isNovice": false,
-        "isPrivate": false,
         "hasLightningInterest": false,
-        "phoneNumber": "12345678910",
         "userId": 1,
         "id": 16,
         "osContributors": [
             {
                 "osContributor": "os contributors",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 7
             }
         ],
         "longForm": [
             {
                 "info": "One of the projects I'm really proud of is my HelloWorld Machine. It says 'Hello World' in ten different languages!",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 3
             }
         ],
         "extraInfo": [
             {
                 "website": "mywebsite.com",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 2
             }
         ],
         "collaborators": [
             {
-                "collaborator": "collaborator@hackillinois.org",
-                "attendeeId": 16,
+                "collaborator": "collaborator@tigerhack.org",
+                "participantId": 16,
                 "id": 16
             }
         ]
@@ -261,18 +260,18 @@ Errors: <br>
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
 | InvalidHeaderError | `Authorization` | the authentication token was invalid or absent |
-| NotFoundError | N/A | an attendee registration doesn't exist for the user |
+| NotFoundError | N/A | an participant registration doesn't exist for the user |
 
 ---
 
-**GET /v1/registration/attendee/{:id}** <br />
-Retrieves information about an attendee. Requires requester to have either the `ADMIN`
-or `STAFF` permission. Identical to `GET /v1/registration/attendee`.
+**GET /v1/registration/participant/{:id}** <br />
+Retrieves information about an participant. Requires requester to have either the `ADMIN`
+or `STAFF` permission. Identical to `GET /v1/registration/participant`.
 
 ---
 
-**GET /v1/registration/attendee/user{:id}** <br />
-Retrieves information about an attendee. Requires requester to have a `host` role.
+**GET /v1/registration/participant/user{:id}** <br />
+Retrieves information about an participant. Requires requester to have a `host` role.
 
 Headers <br />
 
@@ -285,7 +284,7 @@ URL Parameters <br />
 
 | Parameter        | Description           | Required  |
 | ------------- | --------------------- | --------- |
-| `id` | the id of the user whose attendee information the volunteer wants | Yes |
+| `id` | the id of the user whose participant information the volunteer wants | Yes |
 
 Response
 ```
@@ -305,12 +304,12 @@ Errors: <br>
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
 | InvalidHeaderError | `Authorization` | the authentication token was invalid or absent |
-| NotFoundError | N/A | an attendee registration doesn't exist for the user |
+| NotFoundError | N/A | an participant registration doesn't exist for the user |
 
 ---
 
-**PUT /v1/registration/attendee** <br />
-Updates an attendee registration.
+**PUT /v1/registration/participant** <br />
+Updates an participant registration.
 
 Headers <br />
 
@@ -325,32 +324,32 @@ Request Parameters <br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
-| `attendee` | a JSON object containing the Attendee Parameters below | Yes |
+| `participant` | a JSON object containing the participant Parameters below | Yes |
 | `extraInfo` | an array of JSON objects of length at most two, each containing the ExtraInfo parameters below | No |
 | `collaborators` | an array of JSON objects of length at most eight, each containing the RequestedCollaborator parameters below | No |
 
-Attendee Parameters <br />
+Participant Parameters <br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
-| `firstName` | the user's first name of length 255 or less | Yes |
-| `lastName` | the user's last name of length 255 or less | Yes |
+| `firstName` | the user's first name of length 31 or less | Yes |
+| `lastName` | the user's last name of length 31 or less | Yes |
+| `E-mail` | less than 31 characters | Yes |
+| `age` | a number between 13 and 115 | No |
+| `username` | less than 15 characters | Yes |
+| `password` | less than 15 characters | Yes |
+| `school` | the user's school of length 255 or less | Yes |
+| `grade/level` | less than 15 characters | Yes |
+| `major` | the user's major of length 63 or less | Yes |
+| `phoneNumber` | the user's phone number, formatted as a string of length 15 or less | No |
+| `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE', 'INTERNATIONAL'] | Yes |
 | `shirtSize` | a string of length 1 from the following options: ['S', 'M', 'L', 'XL'] | Yes |
 | `diet` | a string from the following options: ['NONE', 'VEGETARIAN', 'VEGAN', 'GLUTEN_FREE'] | Yes |
-| `age` | a number between 13 and 115 | Yes |
-| `graduationYear` | a number between 2017 and 2024 | Yes |
-| `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE', 'INTERNATIONAL'] | Yes |
-| `school` | the user's school of length 255 or less | Yes |
-| `major` | the user's major of length 255 or less | Yes |
 | `gender` | a string from the following options: ['MALE', 'FEMALE', 'NON_BINARY', 'OTHER'] | Yes |
-| `professionalInterest` | a string from the following options: ['INTERNSHIP', 'FULLTIME', 'BOTH'] | Yes |
-| `github` | the user's Github handle of length 50 or less | Yes |
+| `professionalInterest` | a string from the following options: ['NONE', 'INTERNORPARTTIME', 'FULLTIME', 'BOTH'] | Yes |
+| `github` | the user's GitHub handle of length 50 or less | Yes |
 | `linkedin` | the user's LinkedIn handle of length 50 or less | Yes |
-| `interests` | the user's interests of length 255 or less | Yes |
-| `isNovice` | a boolean indicating whether or not the user is a novice | Yes |
-| `isPrivate` | a boolean indicating whether or not the user's information is private | Yes |
 | `hasLightningInterest` | a boolean indicating whether the user is interested in giving a short talk | No |
-| `phoneNumber` | the user's phone number, formatted as a string of length 15 or less | No |
 
 
 ExtraInfo Parameters <br />
@@ -371,29 +370,29 @@ RequestedCollaborator Parameters <br />
 Request
 ```
 {
-    "attendee": {
+    "participant": {
                 "firstName": "John",
                 "lastName": "Doe",
+                "E-mail": "abc56@mail.missouri.edu",
+                "age": 19,
+                "username": "",
+                "password": "",
+                "school": "University of Missouri - Columbia",
+                "grade/level": "junior",
+                "major": "Computer Science",
+                "phoneNumber": "12345678910"
+                "transportation": "NOT_NEEDED",
                 "shirtSize": "M",
                 "diet": "NONE",
-                "age": 19,
-                "graduationYear": 2019,
-                "transportation": "NOT_NEEDED",
-                "school": "University of Illinois at Urbana-Champaign",
-                "major": "Computer Science",
                 "gender": "MALE",
                 "professionalInterest": "BOTH",
                 "github": "JDoe1234",
                 "linkedin": "JDoe5678",
-                "interests": "CS",
-                "isNovice": true,
-                "isPrivate": false,
                 "hasLightningInterest": false,
-                "phoneNumber": "12345678910"
     },
     "collaborators": [
         {
-                    "collaborator": "collaborator@hackillinois.org"
+                    "collaborator": "collaborator@tigerhack.org"
         }
     ],
     "longForm": [
@@ -421,49 +420,49 @@ Response
     "data": {
         "firstName": "John",
         "lastName": "Doe",
+        "E-mail": "abc56@mail.missouri.edu",
+        "age": 19,
+        "username": "",
+        "password": "",
+        "school": "University of Missouri - Columbia",
+        "grade/level": "junior",
+        "major": "Computer Science",
+        "phoneNumber": "12345678910"
+        "transportation": "NOT_NEEDED",
         "shirtSize": "M",
         "diet": "NONE",
-        "age": 19,
-        "graduationYear": 2019,
-        "transportation": "NOT_NEEDED",
-        "school": "University of Illinois at Urbana-Champaign",
-        "major": "Computer Science",
         "gender": "MALE",
         "professionalInterest": "BOTH",
         "github": "JDoe1234",
         "linkedin": "JDoe5678",
-        "interests": "CS",
-        "isNovice": false,
-        "isPrivate": false,
         "hasLightningInterest": false,
-        "phoneNumber": "12345678910",
         "userId": 1,
         "id": 16,
         "osContributors": [
             {
                 "osContributor": "os contributors",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 7
             }
         ],
         "longForm": [
             {
                 "info": "One of the projects I'm really proud of is my HelloWorld Machine. It says 'Hello World' in ten different languages!",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 3
             }
         ],
         "extraInfo": [
             {
                 "website": "mywebsite.com",
-                "attendeeId": 16,
+                "participantId": 16,
                 "id": 2
             }
         ],
         "collaborators": [
             {
-                "collaborator": "collaborator@hackillinois.org",
-                "attendeeId": 16,
+                "collaborator": "collaborator@tigerhack.org",
+                "participantId": 16,
                 "id": 16
             }
         ]
@@ -480,7 +479,7 @@ Errors: <br>
 
 ---
 
-**PUT /v1/registration/attendee/{:id}** <br />
-Updates an attendee registration. Requires requester to have either the ADMIN or STAFF permission. Identical to `PUT /v1/registration/attendee`.
+**PUT /v1/registration/participant/{:id}** <br />
+Updates an participant registration. Requires requester to have either the ADMIN or STAFF permission. Identical to `PUT /v1/registration/participant`.
 
 
