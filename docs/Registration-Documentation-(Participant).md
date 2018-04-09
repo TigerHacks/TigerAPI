@@ -1,9 +1,6 @@
 [README.md](../README.md)
-### Purpose
 
-Creates a participant's record
-
-**POST /v1/registration/participant**
+**POST /v1/registration/participant**<br />
 Creates a new participant registration.
 
 Headers
@@ -12,10 +9,10 @@ Headers
 | ------------- | --------------------- | --------- |
 | `Authorization` | a valid authentication token | Yes |
 
-URL Parameters
+URL Parameters<br />
 None
 
-Request Parameters
+Request Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -25,7 +22,7 @@ Request Parameters
 | `longForm` | an array of JSON objects of length at most two, each containing the LongForm parameters below | No |
 | `osContributors` | an array of JSON objects of length at most eight, each containing the OSContributor parameters below | Yes |
 
-Participant Parameters
+Participant Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -39,7 +36,7 @@ Participant Parameters
 | `grade/level` | less than 15 characters | Yes |
 | `major` | the user's major of length 63 or less | Yes |
 | `phoneNumber` | the user's phone number, formatted as a string of length 15 or less | No |
-| `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE', 'INTERNATIONAL'] | Yes |
+| `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE'| Yes |
 | `shirtSize` | a string of length 1 from the following options: ['S', 'M', 'L', 'XL'] | Yes |
 | `diet` | a string from the following options: ['NONE', 'VEGETARIAN', 'VEGAN', 'GLUTEN_FREE'] | Yes |
 | `gender` | a string from the following options: ['MALE', 'FEMALE', 'NON_BINARY', 'OTHER'] | Yes |
@@ -49,7 +46,7 @@ Participant Parameters
 | `hasLightningInterest` | a boolean indicating whether the user is interested in giving a short talk | No |
 
 
-ExtraInfo Parameters
+ExtraInfo Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -57,13 +54,13 @@ ExtraInfo Parameters
 
 
 
-RequestedCollaborator Parameters
+RequestedCollaborator Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
 | `collaborator` | the requested collaborator's email of length 255 or less | Yes |
 
-LongForm Parameters
+LongForm Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -178,7 +175,7 @@ Response
 }
 ```
 
-Errors: <br>
+Errors:<br />
 
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
@@ -186,7 +183,7 @@ Errors: <br>
 | InvalidHeaderError | `Authorization` | the authentication token was invalid or absent |
 ---
 
-**GET /v1/registration/participant** <br />
+**GET /v1/registration/participant**<br />
 Allows requester to retrieve information about their participant registration. Requires requester to have a participant registration.
 
 Headers <br />
@@ -255,7 +252,7 @@ Response
 }
 ```
 
-Errors: <br>
+Errors: <br />
 
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
@@ -264,23 +261,23 @@ Errors: <br>
 
 ---
 
-**GET /v1/registration/participant/{:id}** <br />
+**GET /v1/registration/participant/{:id}**<br />
 Retrieves information about an participant. Requires requester to have either the `ADMIN`
 or `STAFF` permission. Identical to `GET /v1/registration/participant`.
 
 ---
 
-**GET /v1/registration/participant/user{:id}** <br />
+**GET /v1/registration/participant/user{:id}**<br />
 Retrieves information about an participant. Requires requester to have a `host` role.
 
-Headers <br />
+Headers<br />
 
 | Header        | Description           | Required  |
 | ------------- | --------------------- | --------- |
 | `Authorization` | a valid authentication token | Yes |
 
 
-URL Parameters <br />
+URL Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ------------- | --------------------- | --------- |
@@ -299,7 +296,7 @@ Response
 }
 ```
 
-Errors: <br>
+Errors:<br />
 
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
@@ -308,19 +305,19 @@ Errors: <br>
 
 ---
 
-**PUT /v1/registration/participant** <br />
+**PUT /v1/registration/participant**<br />
 Updates an participant registration.
 
-Headers <br />
+Headers<br />
 
 | Header        | Description           | Required  |
 | ------------- | --------------------- | --------- |
 | `Authorization` | a valid authentication token | Yes |
 
-URL Parameters <br />
+URL Parameters<br />
 None
 
-Request Parameters <br />
+Request Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -328,7 +325,7 @@ Request Parameters <br />
 | `extraInfo` | an array of JSON objects of length at most two, each containing the ExtraInfo parameters below | No |
 | `collaborators` | an array of JSON objects of length at most eight, each containing the RequestedCollaborator parameters below | No |
 
-Participant Parameters <br />
+Participant Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -342,7 +339,7 @@ Participant Parameters <br />
 | `grade/level` | less than 15 characters | Yes |
 | `major` | the user's major of length 63 or less | Yes |
 | `phoneNumber` | the user's phone number, formatted as a string of length 15 or less | No |
-| `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE', 'INTERNATIONAL'] | Yes |
+| `transportation` | a string from the following options: ['NOT_NEEDED', 'BUS_REQUESTED', 'IN_STATE', 'OUT_OF_STATE'| Yes |
 | `shirtSize` | a string of length 1 from the following options: ['S', 'M', 'L', 'XL'] | Yes |
 | `diet` | a string from the following options: ['NONE', 'VEGETARIAN', 'VEGAN', 'GLUTEN_FREE'] | Yes |
 | `gender` | a string from the following options: ['MALE', 'FEMALE', 'NON_BINARY', 'OTHER'] | Yes |
@@ -352,7 +349,7 @@ Participant Parameters <br />
 | `hasLightningInterest` | a boolean indicating whether the user is interested in giving a short talk | No |
 
 
-ExtraInfo Parameters <br />
+ExtraInfo Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -360,7 +357,7 @@ ExtraInfo Parameters <br />
 | `id` | the preexisting id of an ExtraInfo to be updated | No|
 
 
-RequestedCollaborator Parameters <br />
+RequestedCollaborator Parameters<br />
 
 | Parameter        | Description           | Required  |
 | ---------------- | --------------------- | --------- |
@@ -470,7 +467,7 @@ Response
 }
 ```
 
-Errors: <br>
+Errors:<br />
 
 | Error        | Source | Cause  |
 | ------------ | ------ | ------ |
@@ -480,6 +477,13 @@ Errors: <br>
 ---
 
 **PUT /v1/registration/participant/{:id}** <br />
-Updates an participant registration. Requires requester to have either the ADMIN or STAFF permission. Identical to `PUT /v1/registration/participant`.
+Updates an participant registration. Requires requester to have either the ADMIN or STAFF permission. Identical to
+`PUT /v1/registration/participant`.
 
+**DELETE /v1/registration/participant**<br />
+Delete an participant registration.
+
+**DELETE /v1/registration/participant/{:id}** <br />
+Delete an participant registration. Requires requester to have either the ADMIN or STAFF permission. Identical to
+`DELETE /v1/registration/participant`.
 
