@@ -19,8 +19,8 @@ Request
 {
 	"prizeDescription": "Google Home",
 	"descriptionToWin": "Name entered in raffle",
-  "numberOfPrizes": 3,
-  "typeOfPrize": "item",
+  	"numberOfPrizes": 3,
+  	"typeOfPrize": "item",
 	"sponsorName": "Google"
 }
 ```
@@ -32,8 +32,8 @@ Response
 		"id": 1,
 		"prizeDescription": "Google Home",
 		"descriptionToWin": "Name entered in raffle",
-	  "numberOfPrizes": 3,
-	  "typeOfPrize": "item",
+	  	"numberOfPrizes": 3,
+	  	"typeOfPrize": "item",
 		"sponsorName": "Google"
 	}
 }
