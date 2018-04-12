@@ -16,7 +16,7 @@ class THApi(object):
         self.db = s.create_engine(dbstr, poolclass=s.pool.NullPool)
         #If doesn't work, run a test with a SQL command
 
-    def test():
+    def test(self):
         data = {}
         data['test'] = 'success'
         return json.dumps(data)

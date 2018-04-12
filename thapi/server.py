@@ -72,7 +72,7 @@ dbstr = 'mysql+pymysql://{}:{}@{}:{}/{}'.format(
     read_config('Database', 'port', 'THAPI_DB_PORT', '3306'),
     read_config('Database', 'name', 'THAPI_DB_NAME', 'msr14')
 )
-ghtorrent = thapi.THApi(dbstr=dbstr)
+api = thapi.THApi(dbstr=dbstr)
 
 """
 ENDPOINTS
@@ -80,7 +80,7 @@ ENDPOINTS
 
 @app.route('/test')
 def test():
-    return Response(response=THApi.test(),
+    return Response(response=api.test(),
                     status=200,
                     mimetype="application/json")
 
