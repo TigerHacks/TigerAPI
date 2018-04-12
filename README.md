@@ -11,4 +11,3 @@ RestAPI for TigerHacks 2018
 * Riley Evans
 * Christian Cmehil-Warn
 * Dalton Burge
-
