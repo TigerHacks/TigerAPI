@@ -1,0 +1,20 @@
+CREATE TABLE Participants (
+	id int NOT NULL AUTO_INCREMENT,
+	school varchar(31) NOT NULL,
+	grade varchar(15) NOT NULL,
+	age int NOT NULL,
+	major varchar(31) NOT NULL,
+	current_location varchar(63) NOT NULL,
+	working_place varchar(255),
+	title varchar(255),
+	skills varchar(255) NOT NULL,
+	food_allergies varchar(255),
+	gender varchar(15),
+	linkedin varchar(63),
+	github varchar(63),
+	shirt_size varchar(3) NOT NULL,
+	transportation varchar(15) NOT NULL,
+	lightning_interest bool(15) NOT NULL,
+	professional_interest varchar(15) NOT NULL,
+	PRIMARY KEY (id)
+);
