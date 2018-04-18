@@ -17,4 +17,3 @@ CREATE TABLE Participants (
 	lightning_interest bool(15) NOT NULL,
 	professional_interest varchar(15) NOT NULL,
 	PRIMARY KEY (id)
-);
