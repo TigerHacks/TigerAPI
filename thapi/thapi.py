@@ -20,3 +20,7 @@ class THApi(object):
         data = {}
         data['test'] = 'success'
         return json.dumps(data)
+    def getParticipant(self, id):
+        data = {}
+        data['id'] = id
+        return json.dumps(data)

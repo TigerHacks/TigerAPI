@@ -85,7 +85,11 @@ def test():
                     mimetype="application/json")
 
 
-
+@app.route('/participant/<int:id>')
+def getParticipant(id):
+    return Response(response=api.getParticipant(id),
+                    status=200,
+                    mimetype="application/json")
 
 """
 END ENDPOINTS
