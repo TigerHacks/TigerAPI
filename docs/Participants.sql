@@ -14,6 +14,6 @@ CREATE TABLE Participants (
 	github varchar(63),
 	shirt_size varchar(3) NOT NULL,
 	transportation varchar(15) NOT NULL,
-	lightning_interest bool(15) NOT NULL,
+	lightning_interest bool NOT NULL,
 	professional_interest varchar(15) NOT NULL,
 	PRIMARY KEY (id)
