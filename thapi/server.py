@@ -97,6 +97,7 @@ def getParticipants():
                     status=200,
                     mimetype="application/json")
 
+
 """
 END ENDPOINTS
 """
