@@ -24,7 +24,7 @@ class THApi(object):
     def getParticipant(self, id):
         SQL = s.sql.text(" SELECT * FROM Participants WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)
-        if df is None:
+        if df.empty:
             message={}
             message['error'] = 'Not found error'
             return json.dumps(message)
