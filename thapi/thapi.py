@@ -24,4 +24,16 @@ class THApi(object):
     def getParticipant(self, id):
         SQL = s.sql.text(" SELECT * FROM Participants WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)
+        if df.empty:
+            message={}
+            message['error'] = 'Not found error'
+            return json.dumps(message)
         return df.to_json(orient='records', lines=True)
+
+    def getParticipants(self):
+        SQL = s.sql.text(""" SELECT * FROM Participants """)
+        df = pd.read_sql(SQL, self.db)
+        return df.to_json(orient='records')
+
+        
+
