@@ -20,7 +20,8 @@ class THApi(object):
         data = {}
         data['test'] = 'success'
         return json.dumps(data)
+
     def getParticipant(self, id):
-        data = {}
-        data['id'] = id
-        return json.dumps(data)
+        SQL = s.sql.text(""" SELECT * FROM Participants WHERE id=%s"""，id)
+        df = pd.read_sql(SQL, self.db)
+        return df.to_json(orient='records', lines=True)
