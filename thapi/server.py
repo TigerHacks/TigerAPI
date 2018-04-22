@@ -91,6 +91,12 @@ def getParticipant(id):
                     status=200,
                     mimetype="application/json")
 
+@app.route('/participants')
+def getParticipants():
+    return Response(response=api.getParticipants(),
+                    status=200,
+                    mimetype="application/json")
+
 """
 END ENDPOINTS
 """
