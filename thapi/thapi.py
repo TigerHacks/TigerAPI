@@ -35,4 +35,4 @@ class THApi(object):
         df = pd.read_sql(SQL, self.db)
         return df.to_json(orient='records')
 
-        
+      
