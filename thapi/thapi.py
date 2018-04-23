@@ -25,7 +25,7 @@ class THApi(object):
         SQL = s.sql.text(" SELECT * FROM Participants WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)
         if df.empty:
-            message={}
+            message = {}
             message['error'] = 'Not found error'
             return json.dumps(message)
         return df.to_json(orient='records', lines=True)
@@ -35,5 +35,13 @@ class THApi(object):
         df = pd.read_sql(SQL, self.db)
         return df.to_json(orient='records')
 
-        
+    def deleteParticipant(self, id):
+        SQL = s.sql.text(" DELETE FROM Participants WHERE id=" + str(id))
+        result = self.db.engine.execute(SQL)
+        message = {}
+        if result.returns_rows:
+            message['success'] = 'delete success'
+        else:
+            message['error'] = 'Not found error'
+        return json.dumps(message)
 
