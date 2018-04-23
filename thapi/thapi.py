@@ -39,7 +39,7 @@ class THApi(object):
         SQL = s.sql.text(" DELETE FROM Participants WHERE id=" + str(id))
         result = self.db.engine.execute(SQL)
         message = {}
-        if result.returns_rows:
+        if result.rowcount:
             message['success'] = 'delete success'
         else:
             message['error'] = 'Not found error'

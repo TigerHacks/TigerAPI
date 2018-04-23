@@ -85,11 +85,16 @@ def test():
                     mimetype="application/json")
 
 
-@app.route('/participant/<int:id>')
-def getParticipant(id):
-    return Response(response=api.getParticipant(id),
-                    status=200,
-                    mimetype="application/json")
+@app.route('/participant/<int:id>', methods=['GET', 'DELETE'])
+def Participant(id):
+    if request.method == 'GET':
+        return Response(response=api.getParticipant(id),
+                        status=200,
+                        mimetype="application/json")
+    if request.method == 'DELETE':
+        return Response(response=api.deleteParticipant(id),
+                        status=200,
+                        mimetype="application/json")
 
 @app.route('/participants')
 def getParticipants():
@@ -97,11 +102,6 @@ def getParticipants():
                     status=200,
                     mimetype="application/json")
 
-@app.route('/participant/delete/<int:id>')
-def deleteParticipant(id):
-    return Response(response=api.deleteParticipant(id),
-                    status=200,
-                    mimetype="application/json")
 """
 END ENDPOINTS
 """
