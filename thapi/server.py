@@ -91,9 +91,15 @@ def getParticipant(id):
                     status=200,
                     mimetype="application/json")
 
-@app.route('/participants')
-def getParticipants():
-    return Response(response=api.getParticipants(),
+@app.route('/prize/<int:id>')
+def getPrize(id):
+    return Response(response=api.getPrize(id),
+                    status=200,
+                    mimetype="application/json")
+
+@app.route('/prizes/')
+def getPrizes():
+    return Response(response=api.getPrizes(),
                     status=200,
                     mimetype="application/json")
 

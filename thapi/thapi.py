@@ -35,4 +35,16 @@ class THApi(object):
         df = pd.read_sql(SQL, self.db)
         return df.to_json(orient='records')
 
-      
+    def getPrize(self, id):
+        SQL = s.sql.text(" SELECT * FROM Prizes WHERE id=" + str(id))
+        df = pd.read_sql(SQL, self.db)
+        if df is None:
+            message={}
+            message['error'] = 'Not found error'
+            return json.dumps(message)
+        return df.to_json(orient='records', lines=True)
+
+    def getPrizes(self):
+        SQL = s.sql.text(""" SELECT * FROM Prizes """)
+        df = pd.read_sql(SQL, self.db)
+        return df.to_json(orient='records')     
