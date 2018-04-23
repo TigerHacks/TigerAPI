@@ -97,7 +97,11 @@ def getParticipants():
                     status=200,
                     mimetype="application/json")
 
-
+@app.route('/participant/delete/<int:id>')
+def deleteParticipant(id):
+    return Response(response=api.deleteParticipant(id),
+                    status=200,
+                    mimetype="application/json")
 """
 END ENDPOINTS
 """
