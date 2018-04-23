@@ -45,3 +45,28 @@ class THApi(object):
             message['error'] = 'Not found error'
         return json.dumps(message)
 
+
+    def getPrize(self, id):
+        SQL = s.sql.text(" SELECT * FROM Prizes WHERE id=" + str(id))
+        df = pd.read_sql(SQL, self.db)
+        if df.empty:
+            message = {}
+            message['error'] = 'Not found error'
+            return json.dumps(message)
+        return df.to_json(orient='records', lines=True)
+
+    def getPrizes(self):
+        SQL = s.sql.text(""" SELECT * FROM Prizes """)
+        df = pd.read_sql(SQL, self.db)
+        return df.to_json(orient='records')
+
+    def deletePrize(self, id):
+        SQL = s.sql.text(" DELETE FROM Prizes WHERE id=" + str(id))
+        result = self.db.engine.execute(SQL)
+        message = {}
+        if result.rowcount:
+            message['success'] = 'delete success'
+        else:
+            message['error'] = 'Not found error'
+        return json.dumps(message)   
+

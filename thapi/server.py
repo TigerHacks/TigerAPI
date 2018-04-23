@@ -102,6 +102,22 @@ def getParticipants():
                     status=200,
                     mimetype="application/json")
 
+@app.route('/prize/<int:id>', methods=['GET', 'DELETE'])
+def Prize(id):
+    if request.method == 'GET':
+        return Response(response=api.getPrize(id),
+                        status=200,
+                        mimetype="application/json")
+    if request.method == 'DELETE':
+        return Response(response=api.deletePrize(id),
+                        status=200,
+                        mimetype="application/json")
+
+@app.route('/prizes')
+def getPrizes():
+    return Response(response=api.getPrizes(),
+                    status=200,
+                    mimetype="application/json")
 """
 END ENDPOINTS
 """
