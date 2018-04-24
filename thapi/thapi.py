@@ -49,6 +49,25 @@ class THApi(object):
             message['error'] = 'add error'
         return json.dumps(message)
 
+    def updateParticipant(self, id, data):
+        message = {}
+        if len(data) == 0:
+            message['error'] = 'update error'
+            return json.dumps(message)
+        
+        sql_string = "UPDATE Participants SET "
+        for field in data:
+            sql_string += field + "='" + data[field] + "', "
+        sql_string = sql_string[:-2] + " WHERE id=" + str(id)
+        print(sql_string)
+        SQL = s.sql.text(sql_string)
+        try:
+            result = self.db.engine.execute(SQL)
+            message['success'] = 'update success'
+        except:
+            message['error'] = 'update error'
+        return json.dumps(message)
+
     def getParticipant(self, id):
         SQL = s.sql.text(" SELECT * FROM Participants WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)

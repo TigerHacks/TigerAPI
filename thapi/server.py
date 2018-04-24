@@ -92,7 +92,7 @@ def addParticipant():
                     mimetype="application/json")
 
 
-@app.route('/participant/<int:id>', methods=['GET', 'DELETE'])
+@app.route('/participant/<int:id>', methods=['GET', 'DELETE', 'PUT'])
 def Participant(id):
     if request.method == 'GET':
         return Response(response=api.getParticipant(id),
@@ -100,6 +100,10 @@ def Participant(id):
                         mimetype="application/json")
     if request.method == 'DELETE':
         return Response(response=api.deleteParticipant(id),
+                        status=200,
+                        mimetype="application/json")
+    if request.method == 'PUT':
+        return Response(response=api.updateParticipant(id, request.form),
                         status=200,
                         mimetype="application/json")
 
