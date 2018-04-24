@@ -21,6 +21,34 @@ class THApi(object):
         data['test'] = 'success'
         return json.dumps(data)
 
+    def addParticipant(self, data):
+        message = {}
+        if len(data) == 0:
+            message['error'] = 'add error'
+            return json.dumps(message)
+
+        fields = ['school', 'grade', 'age', 'major', 'current_location', 'working_place', 'title', 'skills', 'food_allergies', 'gender', 'linkedin', 'github', 'shirt_size', 'transportation', 'lightning_interest', 'professional_interest']
+        sql_string = "INSERT INTO Participants ("
+        for field in fields:
+            sql_string += field + ", "
+        sql_string = sql_string[:-2] + ") VALUES ("
+        for field in fields:
+            if field in data:
+                if field == "age" or field == "lightning_interest":
+                    sql_string += data[field] + ", "
+                else:
+                    sql_string += "'" + data[field] + "', "
+            else:
+                sql_string += "NULL, "
+        sql_string = sql_string[:-2] + ")"
+        SQL = s.sql.text(sql_string)
+        try:
+            result = self.db.engine.execute(SQL)
+            message['success'] = 'add success'
+        except:
+            message['error'] = 'add error'
+        return json.dumps(message)
+
     def getParticipant(self, id):
         SQL = s.sql.text(" SELECT * FROM Participants WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)

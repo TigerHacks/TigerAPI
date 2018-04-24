@@ -84,6 +84,11 @@ def test():
                     status=200,
                     mimetype="application/json")
 
+@app.route('/participant', methods=['POST'])
+def addParticipant():
+    return Response(response=api.addParticipant(request.form),
+                    status=200,
+                    mimetype="application/json")
 
 @app.route('/participant/<int:id>', methods=['GET', 'DELETE'])
 def Participant(id):
