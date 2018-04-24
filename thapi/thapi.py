@@ -46,6 +46,7 @@ class THApi(object):
         return json.dumps(message)
 
 
+
     def getPrize(self, id):
         SQL = s.sql.text(" SELECT * FROM Prizes WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)
@@ -69,4 +70,5 @@ class THApi(object):
         else:
             message['error'] = 'Not found error'
         return json.dumps(message)   
+
 
