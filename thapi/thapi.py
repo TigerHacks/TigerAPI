@@ -45,17 +45,44 @@ class THApi(object):
             message['error'] = 'Not found error'
         return json.dumps(message)
 
-    def createPrize(self, description, how_to_win, number_of_prizes, sponsor_name):
-        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + str(sponsor_name))
+    def createPrize(self, data):
+        message = {}
+        if len(data) == 0:
+            message['error'] = 'add error'
+            return json.dumps(message)
+
+        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + data[sponsor_name])
         sponsor_id = pd.read_sql(sid, self.db)
         if sponsor_id.empty:
             message = {}
             message['error'] = 'Sponsor not found error'
             return json.dumps(message)
-        SQL = s.sql.text(" INSERT INTO Prizes (prize_description, description_to_win, number_of_prizes, sponsor_id) VALUES ('" + str(description) + "', '" + str(how_to_win) + "', " + number_of_prizes + ", " + sponsor_id + ");")
-        result = self.db.engine.execute(SQL)
-        df = pd.read_sql(SQL, self.db)
-        return df.to_json(orient='records')
+
+        fields = ['prize_description', 'description_to_win', 'number_of_prizes', 'sponsor_id']
+        sql_string = "INSERT INTO Prizes ("
+        for field in fields:
+            sql_string += field + ", "
+        sql_string = sql_string[:-2] + ") VALUES ("
+        for field in fields:
+            if field in data:
+                if field == "prize_description" or field == "description_to_win":
+                    sql_string += "'" + data[field] + "', "
+                if field == "sponsor_id"
+                    sql_string += sponsor_id + ", "
+                else:
+                    sql_string += data[field] + ", "
+            else:
+                message['error'] = 'null value error'
+                return json.dumps(message)
+            
+        sql_string = sql_string[:-2] + ")"
+        SQL = s.sql.text(sql_string)
+        try:
+            result = self.db.engine.execute(SQL)
+            message['success'] = 'add success'
+        except:
+            message['error'] = 'add error'
+        return json.dumps(message)
 
     def getPrize(self, id):
         SQL = s.sql.text(" SELECT * FROM Prizes WHERE id=" + str(id))
