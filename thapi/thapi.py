@@ -46,6 +46,25 @@ class THApi(object):
         return json.dumps(message)
 
 
+
+
+    def createPrize(self, description, how_to_win, number_of_prizes, sponsor_name):
+        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + str(sponsor_name))
+        sponsor_id = pd.read_sql(sid, self.db)
+        if sponsor_id.empty:
+            message = {}
+            message['error'] = 'Sponsor not found error'
+            return json.dumps(message)
+        SQL = s.sql.text(" INSERT INTO Prizes (prize_description, description_to_win, number_of_prizes, sponsor_id) VALUES ('" + str(description) + "', '" + str(how_to_win) + "', " + number_of_prizes + ", " + sponsor_id + ");")
+        result = self.db.engine.execute(SQL)
+        df = pd.read_sql(SQL, self.db)
+        return df.to_json(orient='records')
+
+
+
+
+
+
     def getPrize(self, id):
         SQL = s.sql.text(" SELECT * FROM Prizes WHERE id=" + str(id))
         df = pd.read_sql(SQL, self.db)

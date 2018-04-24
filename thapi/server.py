@@ -118,6 +118,13 @@ def getPrizes():
     return Response(response=api.getPrizes(),
                     status=200,
                     mimetype="application/json")
+
+@app.route('/prizes/create')
+def createPrize(description, how_to_win, number_of_prizes, sponsor_name):
+    return Response(response=api.createPrize(how_to_win, number_of_prizes, sponsor_name),
+                    status=200,
+                    mimetype="application/json")
+                
 """
 END ENDPOINTS
 """
