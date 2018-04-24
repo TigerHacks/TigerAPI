@@ -68,5 +68,18 @@ class THApi(object):
             message['success'] = 'delete success'
         else:
             message['error'] = 'Not found error'
-        return json.dumps(message)   
+        return json.dumps(message)
+    
+    def updatePrize( self, id, prizeDescription, descriptionToWin, numberOfPrizes, sponsorId):
+        SQL = s.sql.text("UPDATE Prizes SET prize_description =" + str(prizeDescription) + " description_to_win=" + str(descriptionToWin) + " number_of_prizes=" + str(numberOfPrizes) + " sponsor_id=" + str(sponsorId) + " WHERE id =" + str(id))
+        result = self.db.engine.execute(SQL)
+        message = {}
+        message['error'] = 'Not found error'
+        return json.dumps(message)
+        
+    
+    
+    
+    
+    
 
