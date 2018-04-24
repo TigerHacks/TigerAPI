@@ -28,15 +28,9 @@ Install virtual environment wrapper
 ### Pip install
 ### Flask
 
-mkvirtualenv HelloWold
 
-
-
-For more detailed guide: http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/
-
-https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 Make a Virtual Environemt:
-Lets call it HelloWold. All we do in a command prompt is enter ‘mkvirtualenv HelloWold’
+Lets call it HelloWold. All we do in a command prompt is enter `mkvirtualenv HelloWold`
 This will create a folder with python.exe, pip, and setuptools all ready to go in its own little environment. It will also activate the Virtual Environment which is indicated with the (HelloWold) on the left side of the prompt.
 
 Anything we install now will be specific to this project. And available to the projects we connect to this environment.
@@ -79,4 +73,12 @@ See here:
 You can now navigate with your browser to http://127.0.0.1:5000/ and see your new site!
 Sweet. You have everything you need to start working through tutorials on Flask without worrying about gunking up your Python installations.
 Let me know if you have any questions! Happy Developing!
+
+
+----------------------------------------
+#### Reference 
+For more detailed guide: http://timmyreilly.azurewebsites.net/python-flask-windows-development-environment-setup/
+
+https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
+
 
