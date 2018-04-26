@@ -51,12 +51,12 @@ class THApi(object):
             message['error'] = 'add error'
             return json.dumps(message)
 
-        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + data['sponsor_name'])
-        sponsor_id = pd.read_sql(sid, self.db)
-        if sponsor_id.empty:
-            message = {}
-            message['error'] = 'Sponsor not found error'
-            return json.dumps(message)
+        # sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + data['sponsor_name'])
+        # sponsor_id = pd.read_sql(sid, self.db)
+        # if sponsor_id.empty:
+        #     message = {}
+        #     message['error'] = 'Sponsor not found error'
+        #     return json.dumps(message)
 
         fields = ['prize_description', 'description_to_win', 'number_of_prizes', 'sponsor_id']
         sql_string = "INSERT INTO Prizes ("
