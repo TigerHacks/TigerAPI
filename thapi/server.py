@@ -119,7 +119,7 @@ def getPrizes():
                     status=200,
                     mimetype="application/json")
 
-@app.route('/prize')
+@app.route('/prize', methods=['POST'])
 def createPrize():
     return Response(response=api.createPrize(request.form),
                     status=200,

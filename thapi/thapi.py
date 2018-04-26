@@ -51,7 +51,7 @@ class THApi(object):
             message['error'] = 'add error'
             return json.dumps(message)
 
-        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + data[sponsor_name])
+        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + data['sponsor_name'])
         sponsor_id = pd.read_sql(sid, self.db)
         if sponsor_id.empty:
             message = {}
@@ -65,17 +65,15 @@ class THApi(object):
         sql_string = sql_string[:-2] + ") VALUES ("
         for field in fields:
             if field in data:
-                if field == "prize_description" or field == "description_to_win":
-                    sql_string += "'" + data[field] + "', "
-                if field == "sponsor_id"
-                    sql_string += sponsor_id + ", "
-                else:
+                if field == "sponsor_id" or field == "number_of_prizes":
                     sql_string += data[field] + ", "
+                else:
+                    sql_string += "'" + data[field] + "', "
             else:
-                message['error'] = 'null value error'
-                return json.dumps(message)
+                sql_string += "NULL, "
             
         sql_string = sql_string[:-2] + ")"
+        print(sql_string)
         SQL = s.sql.text(sql_string)
         try:
             result = self.db.engine.execute(SQL)
