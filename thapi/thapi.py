@@ -50,14 +50,17 @@ class THApi(object):
         if len(data) == 0:
             message['error'] = 'add error'
             return json.dumps(message)
-
-        # sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name=" + data['sponsor_name'])
-        # sponsor_id = pd.read_sql(sid, self.db)
-        # if sponsor_id.empty:
-        #     message = {}
-        #     message['error'] = 'Sponsor not found error'
-        #     return json.dumps(message)
-
+        print(" SELECT id FROM Sponsors WHERE company_name='" + data['sponsor_name'] + "'")
+        sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name='" + data['sponsor_name'] + "'")
+        df_id = pd.read_sql(sid, self.db)
+        if df_id.empty:
+            message = {}
+            message['error'] = 'Sponsor not found error'
+            return json.dumps(message)
+        ids =  df_id.to_dict()
+        for id in ids:
+            for id1 in ids[id]:
+                sponsor_id = ids[id][id1]
         fields = ['prize_description', 'description_to_win', 'number_of_prizes', 'sponsor_id']
         sql_string = "INSERT INTO Prizes ("
         for field in fields:
@@ -65,13 +68,16 @@ class THApi(object):
         sql_string = sql_string[:-2] + ") VALUES ("
         for field in fields:
             if field in data:
-                if field == "sponsor_id" or field == "number_of_prizes":
+                if field == "number_of_prizes":
                     sql_string += data[field] + ", "
                 else:
                     sql_string += "'" + data[field] + "', "
+            elif field == "sponsor_id":
+                print(sponsor_id)
+                sql_string += str(sponsor_id) + ", "
             else:
                 sql_string += "NULL, "
-            
+        print(sql_string)
         sql_string = sql_string[:-2] + ")"
         print(sql_string)
         SQL = s.sql.text(sql_string)
