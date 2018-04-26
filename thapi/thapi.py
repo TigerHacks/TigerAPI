@@ -50,7 +50,6 @@ class THApi(object):
         if len(data) == 0:
             message['error'] = 'add error'
             return json.dumps(message)
-        print(" SELECT id FROM Sponsors WHERE company_name='" + data['sponsor_name'] + "'")
         sid = s.sql.text(" SELECT id FROM Sponsors WHERE company_name='" + data['sponsor_name'] + "'")
         df_id = pd.read_sql(sid, self.db)
         if df_id.empty:
@@ -77,9 +76,7 @@ class THApi(object):
                 sql_string += str(sponsor_id) + ", "
             else:
                 sql_string += "NULL, "
-        print(sql_string)
         sql_string = sql_string[:-2] + ")"
-        print(sql_string)
         SQL = s.sql.text(sql_string)
         try:
             result = self.db.engine.execute(SQL)
