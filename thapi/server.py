@@ -122,9 +122,6 @@ def Prize(id):
         return Response(response=api.updatePrize(id, prizeDescription, descriptionToWin, numberOfPrizes, typeOfPrize, sponsorName),
                         status=200
                         mimetype="application/json")
-        
-
-
 
 @app.route('/prizes')
 def getPrizes():
@@ -132,11 +129,6 @@ def getPrizes():
                     status=200,
                     mimetype="application/json")
 
-@app.route('/prize/<int:id>/<str:prizeDescription>/<str:descriptionToWin>/<int:numberOfPrizes>/<str:typeOfPrize>/<str:sponsorName>', methods=['GET'. 'POST'])
-def updatePrize():
-    return Response(response=api.updatePrize( id, prizeDescription, descriptionToWin, numberOfPRizes, typeOfPrize, sponsorName),
-    status=200
-    mimetype="application/json")
 """
 END ENDPOINTS
 """
