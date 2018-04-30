@@ -102,7 +102,7 @@ def getParticipants():
                     status=200,
                     mimetype="application/json")
 
-@app.route('/prize/<int:id>', methods=['GET', 'DELETE'])
+@app.route('/prize/<int:id>', methods=['GET', 'DELETE', 'POST'])
 def Prize(id):
     if request.method == 'GET':
         return Response(response=api.getPrize(id),
@@ -112,6 +112,19 @@ def Prize(id):
         return Response(response=api.deletePrize(id),
                         status=200,
                         mimetype="application/json")
+    if request.method == 'POST':
+        id = request.form.get('id') 
+        prizeDescription = request.form.get('prizeDescription') 
+        descriptionToWin = request.form.get('descriptionToWin') 
+        numberOfPrizes = request.form.get('numberOfPrizes') 
+        typeOfPrize = request.form.get('typeOfPrize') 
+        sponsorName = request.form.get('sponsorName') 
+        return Response(response=api.updatePrize(id, prizeDescription, descriptionToWin, numberOfPrizes, typeOfPrize, sponsorName),
+                        status=200
+                        mimetype="application/json")
+        
+
+
 
 @app.route('/prizes')
 def getPrizes():
@@ -119,11 +132,11 @@ def getPrizes():
                     status=200,
                     mimetype="application/json")
 
-@app.route('/prize/<int:id>/<str:prizeDescription>/<str:descriptionToWin>/<int:numberOfPrizes>/<str:typeOfPrize>/<str:sponsorName>')
+@app.route('/prize/<int:id>/<str:prizeDescription>/<str:descriptionToWin>/<int:numberOfPrizes>/<str:typeOfPrize>/<str:sponsorName>', methods=['GET'. 'POST'])
 def updatePrize():
-    return Response(response=api.updatePrize( id, prizeDescription, descriptionToWin, numberOfPRizes, typeOfPrize, sponsorName)),
+    return Response(response=api.updatePrize( id, prizeDescription, descriptionToWin, numberOfPRizes, typeOfPrize, sponsorName),
     status=200
-    mimetype="application/json"
+    mimetype="application/json")
 """
 END ENDPOINTS
 """
