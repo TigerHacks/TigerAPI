@@ -11,3 +11,9 @@ RestAPI for TigerHacks 2018
 * Riley Evans
 * Christian Cmehil-Warn
 * Dalton Burge
+
+## Project Video
+https://youtu.be/l6sKW69ikYw
+
+## Description 
+This is a REST API for the organization TigerHacks that allows CRUD operations.

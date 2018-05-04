@@ -131,7 +131,7 @@ def Prize(id):
         typeOfPrize = request.form.get('typeOfPrize') 
         sponsorName = request.form.get('sponsorName') 
         return Response(response=api.updatePrize(id, prizeDescription, descriptionToWin, numberOfPrizes, typeOfPrize, sponsorName),
-                        status=200
+                        status=200,
                         mimetype="application/json")
 
 @app.route('/prizes')
